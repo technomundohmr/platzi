@@ -1,0 +1,21 @@
+{% extends "layout/layout.html" %}
+
+{% block content %}
+    <div class="container">
+        <div class="border border-withe p-5">        
+            <h1 class="text-3xl text-white my-5">
+                {{question.question_text}}
+            </h1>
+        
+            <ul>
+                {% for choice in question.choice_set.all %}
+                    <li>
+                        {{ choice.choice_text }} --> {{choice.votes}} voto{{choice.votes|pluralize}}
+                    </li>
+                {% endfor %}
+            </ul>
+        
+        </div>
+        <a href="{% url 'polls:detail' question.id %}" class="flex justify-center items-center w-full h-10 text-white border border-white mb-10 px-5 py-2">Votar de nuevo</a>
+    </div>
+{% endblock %}

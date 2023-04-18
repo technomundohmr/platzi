@@ -1,0 +1,31 @@
+{% extends "layout/layout.html" %}
+
+{% block content %}
+
+    <form method="POST" action="{% url 'polls:vote' question.id %}" class="">
+        <div class="form-box">
+            {% csrf_token %}
+            <fieldset class="flex flex-colum border border-white p-10">
+                <legend class="text-2xl">  <h1>{{question.question_text}}</h1></legend>
+                {% if error_message %}
+                    <p><strong>{{error_message}}</strong></p>
+                {% endif %}
+                <div class="flex flex-col w-full items-center m-4">
+                    {% for choice in question.choice_set.all %}
+                        <div class="my-4">
+                            <input \
+                                type="radio"
+                                name="choice"
+                                id="choice-{{forloop.counter}}"
+                                value="{{choice.id}}"
+                            >
+                            <label for="choice-{{forloop.counter}}">{{choice.choice_text}}</label>
+                        </div>
+                    {% endfor %}
+                </div>
+            </fieldset>
+        </div>
+        <button type="submit" class="w-full h-10 text-white border border-white mb-10">Votar</button>
+    </form>
+
+{% endblock %}

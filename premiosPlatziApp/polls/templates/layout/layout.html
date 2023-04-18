@@ -1,0 +1,29 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	{% tailwind_css %}
+
+    <title>Premios Platzy App</title>
+</head>
+<body class="flex items-center justify-center flex-col">
+    <header class="flex items-center justify-center p-12 pt-24 h-16 text-7xl text-[#71632d] mb-4">
+        Premios Platzi App
+    </header>
+    <main>
+        {% block content %}
+    
+        {% endblock %}
+    </main>
+    <footer class="flex items-center justify-evenly text-white w-full">
+        <a href="platzi.com">platzi</a>
+        <a href="#">Politicas de privacidad</a>
+        <a href="saibher.com">Creado por Saibher.com</a>
+        <a href="#">Politicas de privacidad</a>
+    </footer>
+</body>
+</html>

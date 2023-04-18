@@ -1,0 +1,13 @@
+{% extends "layout/layout.html" %}
+
+{% block content %}
+    {% if latest_question_list %}
+        <ul class="flex items-center justify-center flex-col">
+            {% for question in latest_question_list  %}  
+                <li class="flex items-center justify-center w-[500px] border-white border p-12 mb-5 text-2xl"><a href='{% url "polls:detail" question.id %}' class="text-white">{{question.question_text}}</a></li>
+            {% endfor %}      
+        </ul>
+    {% else %}
+        <p>No hay encuestas en este momento</p>
+    {% endif %}
+{% endblock %}
